@@ -1,0 +1,1547 @@
+{%extends 'main.html'%} {%load static%} {%block content%}
+
+<style>
+  .br {
+    color: white;
+  }
+  video {
+    height: 50vw;
+  }
+  .video {
+    margin: 0;
+    padding: 60px;
+    background-color: rgb(254, 206, 9);
+  }
+  .slidercaption {
+    z-index: 100;
+    font-size: 30px;
+    position: relative;
+    top: -53vw;
+    right: 5vw;
+    width: 40vw;
+  }
+  .cap {
+    margin: 3vh;
+    padding: 0vw 25vw;
+    text-align: center;
+    font-size: 12px;
+  }
+  .card-text {
+    font-size: 12px;
+  }
+  .carousel-item {
+    height: 30%;
+  }
+
+  .exclusive {
+    display: block;
+    width: 100%;
+    padding: 0.5%;
+    color: white;
+    background-color: black;
+    z-index: -2;
+    align-content: center;
+  }
+
+  .exclusive-title {
+    display: block;
+    position: relative;
+    padding: 0.5%;
+    margin: 0;
+    font-size: 22px;
+    width: 100%;
+    top: 30px;
+  }
+
+  .exclusive-card-frame {
+    overflow-y: hidden;
+    white-space: nowrap;
+    display: block;
+  }
+
+  .exclusive-card {
+    width: 500px;
+    display: inline-block;
+    margin: 5px;
+  }
+
+  .tvshow-card {
+    width: 300px;
+    display: inline-block;
+    margin: 5px;
+  }
+
+  .movie-card {
+    width: 300px;
+    display: inline-block;
+    margin: 5px;
+  }
+
+  .doc-card {
+    width: 300px;
+    display: inline-block;
+    margin: 5px;
+  }
+
+  .clip-card {
+    width: 200px;
+    display: inline-block;
+    margin: 5px;
+  }
+
+  .spacer {
+    display: block;
+    width: 100%;
+    position: relative;
+    top: 15px;
+  }
+
+  .card-body {
+    position: relative;
+    top: 0px;
+    height: 10px;
+  }
+
+  .btn {
+    position: relative;
+    top: -100px;
+  }
+
+  .card-text {
+    display: none;
+  }
+
+  .card-title {
+    font-size: 16px;
+  }
+
+  .sm-btn {
+    position: relative;
+    font-size: 12px;
+    top: -80px;
+    right: -10px;
+    height: 30px;
+  }
+
+  .play-icon {
+    width: 30px;
+  }
+
+  .view-counter {
+    position: relative;
+    top: -20px;
+    right: 430px;
+    width: 70px;
+    border-radius: 5px;
+    backdrop-filter: blur(20px);
+  }
+
+  .play-icon-med {
+    width: 30px;
+  }
+
+  .view-counter-med {
+    position: relative;
+    top: -20px;
+    right: 230px;
+    width: 70px;
+    border-radius: 5px;
+    backdrop-filter: blur(20px);
+  }
+
+  .play-icon-sm {
+    width: 20px;
+  }
+
+  .view-counter-sm {
+    position: relative;
+    top: -20px;
+    right: 150px;
+    width: 70px;
+    border-radius: 5px;
+    backdrop-filter: blur(20px);
+  }
+
+  <!--Count Down-->
+  .countdownframe{
+    color:white;
+  }
+  #countdown {
+    font-family: Arial, sans-serif;
+    color: white;
+    font-size: 24px;
+  }
+
+  @media screen and (max-width: 480px) {
+    .slidercaption {
+      z-index: 100;
+      font-size: 12px;
+      position: relative;
+      top: -53vw;
+      right: 5vw;
+      width: 60vw;
+    }
+    .cap {
+      margin: 3vh;
+      padding: 0vw 15vw;
+      text-align: center;
+      font-size: 12px;
+    }
+
+    .slider-image {
+      box-shadow: 0 0 8px 8px;
+      height: 50%;
+    }
+    .exclusive-title {
+      display: block;
+      position: relative;
+      padding: 5px;
+      font-size: 15px;
+      width: 100%;
+      top: 30px;
+    }
+    .exclusive-card {
+      width: 180px;
+      display: inline-block;
+      margin: 5px;
+    }
+
+    .tvshow-card {
+      width: 180px;
+      display: inline-block;
+      margin: 5px;
+    }
+
+    .doc-card {
+      width: 180px;
+      display: inline-block;
+      margin: 5px;
+    }
+
+    .movie-card {
+      width: 180px;
+      display: inline-block;
+      margin: 5px;
+    }
+
+    .clip-card {
+      width: 180px;
+      display: inline-block;
+      margin: 5px;
+    }
+
+    .btn {
+      position: relative;
+      width: 100%;
+      height: 30px;
+      font-size: 12px;
+      top: 0;
+      display: none;
+    }
+    .card-body {
+      position: relative;
+      top: 0;
+      height: 10px;
+    }
+
+    .card-title {
+      position: relative;
+      top: -5px;
+      font-size: 14px;
+    }
+
+    .play-icon {
+      width: 20px;
+    }
+
+    .view-counter {
+      position: relative;
+      top: -25px;
+      right: 130px;
+      width: 50px;
+      border-radius: 5px;
+      backdrop-filter: blur(20px);
+    }
+
+    .play-icon-med {
+      width: 20px;
+    }
+
+    .view-counter-med {
+      position: relative;
+      top: -25px;
+      right: 125px;
+      width: 70px;
+      border-radius: 5px;
+      backdrop-filter: blur(20px);
+    }
+
+    .play-icon-sm {
+      width: 20px;
+    }
+
+    .view-counter-sm {
+      position: relative;
+      top: -25px;
+      right: 125px;
+      width: 70px;
+      border-radius: 5px;
+      backdrop-filter: blur(20px);
+    }
+  }
+</style>
+
+<!--Count Down-->
+
+<div class="countdownframe">
+  <div id="countdown">
+    <span id="days"></span>روز و<span id="hours"></span>ساعت و 
+    <span id="minutes"></span>دقیقه و  <span id="seconds"></span>ثانیه
+  </div>
+
+  <script>
+    const target = new Date("{{ target_time|date:'c' }}").getTime();
+
+    const updateCountdown = () => {
+      const now = new Date().getTime();
+      const distance = target - now;
+
+      if (distance < 0) {
+        document.getElementById("countdown").innerHTML = "Event has started!";
+        return;
+      }
+
+      const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+      const hours = Math.floor(
+        (distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
+      );
+      const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+      document.getElementById("days").innerHTML = days;
+      document.getElementById("hours").innerHTML = hours;
+      document.getElementById("minutes").innerHTML = minutes;
+      document.getElementById("seconds").innerHTML = seconds;
+    };
+
+    // Update the countdown every 1 second
+    setInterval(updateCountdown, 1000);
+  </script>
+</div>
+
+<!--SLIDER-->
+<div
+  id="carouselExampleIndicators"
+  class="carousel slide"
+  data-bs-ride="carousel"
+>
+  {% comment %}
+  <div class="carousel-indicators">
+    <button
+      type="button"
+      data-bs-target="#carouselExampleIndicators"
+      data-bs-slide-to="2"
+      class="active"
+      aria-current="true"
+      aria-label="Slide 3"
+    ></button>
+    <button
+      type="button"
+      data-bs-target="#carouselExampleIndicators"
+      data-bs-slide-to="1"
+      aria-label="Slide 2"
+    ></button>
+    <button
+      type="button"
+      data-bs-target="#carouselExampleIndicators"
+      data-bs-slide-to="0"
+      aria-label="Slide 1"
+    ></button>
+  </div>
+  {% endcomment %}
+
+  <div class="carousel-inner">
+    {%for slide in slider%}
+    <div class="carousel-item {%if slide.first%}active{%endif%}">
+      <img
+        src="{{slide.poster.url}}"
+        class="slider-image d-block w-100"
+        alt="{{slide.name}}"
+        style="box-shadow: 0 0 38px 38px white inset"
+      />
+
+      <div class="slidercaption">{{slide.des}}</div>
+    </div>
+    {%endfor%}
+  </div>
+  <button
+    class="carousel-control-prev active"
+    type="button"
+    data-bs-target="#carouselExampleIndicators"
+    data-bs-slide="prev"
+  >
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Previous</span>
+  </button>
+  <button
+    class="carousel-control-next"
+    type="button"
+    data-bs-target="#carouselExampleIndicators"
+    data-bs-slide="next"
+  >
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Next</span>
+  </button>
+</div>
+
+<div class="spacer">
+  <img class="spacer" src="{%static 'jjii/images/tvshow.gif'%}" alt="" />
+</div>
+
+<!--ویژه-->
+
+<div class="exclusive bg-dark m-0 d-block">
+  <div class="exclusive-title">
+    <a href="{%url 'exclusive'%}"> ویژه </a>
+  </div>
+  <br />
+  <div class="exclusive-card-frame justify-content-center">
+    <div class="card exclusive-card bg-dark text-light">
+      <img
+        class="card-img-top"
+        src="{%static 'jjii/images/slider01.jpg'%}"
+        alt="Card image cap"
+      />
+      <div class="card-body">
+        <h5 class="card-title">مستوران</h5>
+        <p class="card-text">سریال تلویزیونی مستوران</p>
+        <a href="#" class="btn btn-primary">تماشا کنید</a>
+      </div>
+
+      <div class="view-counter">
+        <span class="times-played">121</span>
+        <img class="play-icon" src="{%static 'jjii/images/play.png'%}" alt="" />
+      </div>
+    </div>
+
+    <div class="card exclusive-card bg-dark text-light">
+      <img
+        class="card-img-top"
+        src="{%static 'jjii/images/slider01.jpg'%}"
+        alt="Card image cap"
+      />
+      <div class="card-body">
+        <h5 class="card-title">مستوران</h5>
+        <p class="card-text">سریال تلویزیونی مستوران</p>
+        <a href="#" class="btn btn-primary">تماشا کنید</a>
+      </div>
+
+      <div class="view-counter">
+        <span class="times-played">121</span>
+        <img class="play-icon" src="{%static 'jjii/images/play.png'%}" alt="" />
+      </div>
+    </div>
+
+    <div class="card exclusive-card bg-dark text-light">
+      <img
+        class="card-img-top"
+        src="{%static 'jjii/images/slider01.jpg'%}"
+        alt="Card image cap"
+      />
+      <div class="card-body">
+        <h5 class="card-title">مستوران</h5>
+        <p class="card-text">سریال تلویزیونی مستوران</p>
+        <a href="#" class="btn btn-primary">تماشا کنید</a>
+      </div>
+
+      <div class="view-counter">
+        <span class="times-played">121</span>
+        <img class="play-icon" src="{%static 'jjii/images/play.png'%}" alt="" />
+      </div>
+    </div>
+
+    <div class="card exclusive-card bg-dark text-light">
+      <img
+        class="card-img-top"
+        src="{%static 'jjii/images/slider01.jpg'%}"
+        alt="Card image cap"
+      />
+      <div class="card-body">
+        <h5 class="card-title">مستوران</h5>
+        <p class="card-text">سریال تلویزیونی مستوران</p>
+        <a href="#" class="btn btn-primary">تماشا کنید</a>
+      </div>
+
+      <div class="view-counter">
+        <span class="times-played">121</span>
+        <img class="play-icon" src="{%static 'jjii/images/play.png'%}" alt="" />
+      </div>
+    </div>
+
+    <div class="card exclusive-card bg-dark text-light">
+      <img
+        class="card-img-top"
+        src="{%static 'jjii/images/slider01.jpg'%}"
+        alt="Card image cap"
+      />
+      <div class="card-body">
+        <h5 class="card-title">مستوران</h5>
+        <p class="card-text">سریال تلویزیونی مستوران</p>
+        <a href="#" class="btn btn-primary">تماشا کنید</a>
+      </div>
+
+      <div class="view-counter">
+        <span class="times-played">121</span>
+        <img class="play-icon" src="{%static 'jjii/images/play.png'%}" alt="" />
+      </div>
+    </div>
+
+    <div class="card exclusive-card bg-dark text-light">
+      <img
+        class="card-img-top"
+        src="{%static 'jjii/images/slider01.jpg'%}"
+        alt="Card image cap"
+      />
+      <div class="card-body">
+        <h5 class="card-title">مستوران</h5>
+        <p class="card-text">سریال تلویزیونی مستوران</p>
+        <a href="#" class="btn btn-primary">تماشا کنید</a>
+      </div>
+
+      <div class="view-counter">
+        <span class="times-played">121</span>
+        <img class="play-icon" src="{%static 'jjii/images/play.png'%}" alt="" />
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="spacer">
+  <img class="spacer" src="{%static 'jjii/images/spacer02.jpg'%}" alt="" />
+</div>
+
+<!--برنامه های تلویزیونی-->
+
+<div class="exclusive bg-dark m-0 d-block">
+  <div class="exclusive-title">برنامه های تلویزیونی</div>
+  <br />
+  <div class="exclusive-card-frame justify-content-center">
+    <div class="card tvshow-card bg-dark text-light">
+      <img
+        class="card-img-top"
+        src="{%static 'jjii/images/slider01.jpg'%}"
+        alt="Card image cap"
+      />
+      <div class="card-body">
+        <h5 class="card-title">مستوران</h5>
+        <p class="card-text">سریال تلویزیونی مستوران</p>
+        <a href="#" class="btn btn-primary">تماشا کنید</a>
+      </div>
+
+      <div class="view-counter-med">
+        <span class="times-played-med">121</span>
+        <img
+          class="play-icon-med"
+          src="{%static 'jjii/images/play.png'%}"
+          alt=""
+        />
+      </div>
+    </div>
+
+    <div class="card tvshow-card bg-dark text-light">
+      <img
+        class="card-img-top"
+        src="{%static 'jjii/images/slider01.jpg'%}"
+        alt="Card image cap"
+      />
+      <div class="card-body">
+        <h5 class="card-title">مستوران</h5>
+        <p class="card-text">سریال تلویزیونی مستوران</p>
+        <a href="#" class="btn btn-primary">تماشا کنید</a>
+      </div>
+
+      <div class="view-counter-med">
+        <span class="times-played-med">121</span>
+        <img
+          class="play-icon-med"
+          src="{%static 'jjii/images/play.png'%}"
+          alt=""
+        />
+      </div>
+    </div>
+
+    <div class="card tvshow-card bg-dark text-light">
+      <img
+        class="card-img-top"
+        src="{%static 'jjii/images/slider01.jpg'%}"
+        alt="Card image cap"
+      />
+      <div class="card-body">
+        <h5 class="card-title">مستوران</h5>
+        <p class="card-text">سریال تلویزیونی مستوران</p>
+        <a href="#" class="btn btn-primary">تماشا کنید</a>
+      </div>
+
+      <div class="view-counter-med">
+        <span class="times-played-med">121</span>
+        <img
+          class="play-icon-med"
+          src="{%static 'jjii/images/play.png'%}"
+          alt=""
+        />
+      </div>
+    </div>
+
+    <div class="card tvshow-card bg-dark text-light">
+      <img
+        class="card-img-top"
+        src="{%static 'jjii/images/slider01.jpg'%}"
+        alt="Card image cap"
+      />
+      <div class="card-body">
+        <h5 class="card-title">مستوران</h5>
+        <p class="card-text">سریال تلویزیونی مستوران</p>
+        <a href="#" class="btn btn-primary">تماشا کنید</a>
+      </div>
+
+      <div class="view-counter-med">
+        <span class="times-played-med">121</span>
+        <img
+          class="play-icon-med"
+          src="{%static 'jjii/images/play.png'%}"
+          alt=""
+        />
+      </div>
+    </div>
+
+    <div class="card tvshow-card bg-dark text-light">
+      <img
+        class="card-img-top"
+        src="{%static 'jjii/images/slider01.jpg'%}"
+        alt="Card image cap"
+      />
+      <div class="card-body">
+        <h5 class="card-title">مستوران</h5>
+        <p class="card-text">سریال تلویزیونی مستوران</p>
+        <a href="#" class="btn btn-primary">تماشا کنید</a>
+      </div>
+
+      <div class="view-counter-med">
+        <span class="times-played-med">121</span>
+        <img
+          class="play-icon-med"
+          src="{%static 'jjii/images/play.png'%}"
+          alt=""
+        />
+      </div>
+    </div>
+
+    <div class="card tvshow-card bg-dark text-light">
+      <img
+        class="card-img-top"
+        src="{%static 'jjii/images/slider01.jpg'%}"
+        alt="Card image cap"
+      />
+      <div class="card-body">
+        <h5 class="card-title">مستوران</h5>
+        <p class="card-text">سریال تلویزیونی مستوران</p>
+        <a href="#" class="btn btn-primary">تماشا کنید</a>
+      </div>
+
+      <div class="view-counter-med">
+        <span class="times-played-med">121</span>
+        <img
+          class="play-icon-med"
+          src="{%static 'jjii/images/play.png'%}"
+          alt=""
+        />
+      </div>
+    </div>
+
+    <div class="card tvshow-card bg-dark text-light">
+      <img
+        class="card-img-top"
+        src="{%static 'jjii/images/slider01.jpg'%}"
+        alt="Card image cap"
+      />
+      <div class="card-body">
+        <h5 class="card-title">مستوران</h5>
+        <p class="card-text">سریال تلویزیونی مستوران</p>
+        <a href="#" class="btn btn-primary">تماشا کنید</a>
+      </div>
+
+      <div class="view-counter-med">
+        <span class="times-played-med">121</span>
+        <img
+          class="play-icon-med"
+          src="{%static 'jjii/images/play.png'%}"
+          alt=""
+        />
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="spacer">
+  <img class="spacer" src="{%static 'jjii/images/spacer02.jpg'%}" alt="" />
+</div>
+
+<!--سریال-->
+
+<div class="exclusive bg-dark m-0 d-block">
+  <div class="exclusive-title">سریال</div>
+  <br />
+  <div class="exclusive-card-frame justify-content-center">
+    <div class="card exclusive-card bg-dark text-light">
+      <img
+        class="card-img-top"
+        src="{%static 'jjii/images/slider01.jpg'%}"
+        alt="Card image cap"
+      />
+      <div class="card-body">
+        <h5 class="card-title">معصومیت از دست رفته</h5>
+        <p class="card-text">سریال تلویزیونی مستوران</p>
+        <a href="#" class="btn btn-primary">تماشا کنید</a>
+      </div>
+
+      <div class="view-counter">
+        <span class="times-played">121</span>
+        <img class="play-icon" src="{%static 'jjii/images/play.png'%}" alt="" />
+      </div>
+    </div>
+
+    <div class="card exclusive-card bg-dark text-light">
+      <img
+        class="card-img-top"
+        src="{%static 'jjii/images/slider01.jpg'%}"
+        alt="Card image cap"
+      />
+      <div class="card-body">
+        <h5 class="card-title">معصومیت از دست رفته</h5>
+        <p class="card-text">سریال تلویزیونی مستوران</p>
+        <a href="#" class="btn btn-primary">تماشا کنید</a>
+      </div>
+
+      <div class="view-counter">
+        <span class="times-played">121</span>
+        <img class="play-icon" src="{%static 'jjii/images/play.png'%}" alt="" />
+      </div>
+    </div>
+
+    <div class="card exclusive-card bg-dark text-light">
+      <img
+        class="card-img-top"
+        src="{%static 'jjii/images/slider01.jpg'%}"
+        alt="Card image cap"
+      />
+      <div class="card-body">
+        <h5 class="card-title">معصومیت از دست رفته</h5>
+        <p class="card-text">سریال تلویزیونی مستوران</p>
+        <a href="#" class="btn btn-primary">تماشا کنید</a>
+      </div>
+
+      <div class="view-counter">
+        <span class="times-played">121</span>
+        <img class="play-icon" src="{%static 'jjii/images/play.png'%}" alt="" />
+      </div>
+    </div>
+
+    <div class="card exclusive-card bg-dark text-light">
+      <img
+        class="card-img-top"
+        src="{%static 'jjii/images/slider01.jpg'%}"
+        alt="Card image cap"
+      />
+      <div class="card-body">
+        <h5 class="card-title">معصومیت از دست رفته</h5>
+        <p class="card-text">سریال تلویزیونی مستوران</p>
+        <a href="#" class="btn btn-primary">تماشا کنید</a>
+      </div>
+
+      <div class="view-counter">
+        <span class="times-played">121</span>
+        <img class="play-icon" src="{%static 'jjii/images/play.png'%}" alt="" />
+      </div>
+    </div>
+
+    <div class="card exclusive-card bg-dark text-light">
+      <img
+        class="card-img-top"
+        src="{%static 'jjii/images/slider01.jpg'%}"
+        alt="Card image cap"
+      />
+      <div class="card-body">
+        <h5 class="card-title">معصومیت از دست رفته</h5>
+        <p class="card-text">سریال تلویزیونی مستوران</p>
+        <a href="#" class="btn btn-primary">تماشا کنید</a>
+      </div>
+
+      <div class="view-counter">
+        <span class="times-played">121</span>
+        <img class="play-icon" src="{%static 'jjii/images/play.png'%}" alt="" />
+      </div>
+    </div>
+
+    <div class="card exclusive-card bg-dark text-light">
+      <img
+        class="card-img-top"
+        src="{%static 'jjii/images/slider01.jpg'%}"
+        alt="Card image cap"
+      />
+      <div class="card-body">
+        <h5 class="card-title">معصومیت از دست رفته</h5>
+        <p class="card-text">سریال تلویزیونی مستوران</p>
+        <a href="#" class="btn btn-primary">تماشا کنید</a>
+      </div>
+
+      <div class="view-counter">
+        <span class="times-played">121</span>
+        <img class="play-icon" src="{%static 'jjii/images/play.png'%}" alt="" />
+      </div>
+    </div>
+
+    <div class="card exclusive-card bg-dark text-light">
+      <img
+        class="card-img-top"
+        src="{%static 'jjii/images/slider01.jpg'%}"
+        alt="Card image cap"
+      />
+      <div class="card-body">
+        <h5 class="card-title">معصومیت از دست رفته</h5>
+        <p class="card-text">سریال تلویزیونی مستوران</p>
+        <a href="#" class="btn btn-primary">تماشا کنید</a>
+      </div>
+
+      <div class="view-counter">
+        <span class="times-played">121</span>
+        <img class="play-icon" src="{%static 'jjii/images/play.png'%}" alt="" />
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="spacer">
+  <img class="spacer" src="{%static 'jjii/images/spacer02.jpg'%}" alt="" />
+</div>
+
+<!--فیلم ها-->
+
+<div class="exclusive bg-dark m-0 d-block">
+  <div class="exclusive-title">فیلم</div>
+  <br />
+  <div class="exclusive-card-frame justify-content-center">
+    <div class="card movie-card bg-dark text-light">
+      <img
+        class="card-img-top"
+        src="{%static 'jjii/images/slider01.jpg'%}"
+        alt="Card image cap"
+      />
+      <div class="card-body">
+        <h5 class="card-title">مستوران</h5>
+        <p class="card-text">سریال تلویزیونی مستوران</p>
+        <a href="#" class="btn btn-primary">تماشا کنید</a>
+      </div>
+
+      <div class="view-counter-med">
+        <span class="times-played-med">121</span>
+        <img
+          class="play-icon-med"
+          src="{%static 'jjii/images/play.png'%}"
+          alt=""
+        />
+      </div>
+    </div>
+
+    <div class="card movie-card bg-dark text-light">
+      <img
+        class="card-img-top"
+        src="{%static 'jjii/images/slider01.jpg'%}"
+        alt="Card image cap"
+      />
+      <div class="card-body">
+        <h5 class="card-title">مستوران</h5>
+        <p class="card-text">سریال تلویزیونی مستوران</p>
+        <a href="#" class="btn btn-primary">تماشا کنید</a>
+      </div>
+
+      <div class="view-counter-med">
+        <span class="times-played-med">121</span>
+        <img
+          class="play-icon-med"
+          src="{%static 'jjii/images/play.png'%}"
+          alt=""
+        />
+      </div>
+    </div>
+
+    <div class="card movie-card bg-dark text-light">
+      <img
+        class="card-img-top"
+        src="{%static 'jjii/images/slider01.jpg'%}"
+        alt="Card image cap"
+      />
+      <div class="card-body">
+        <h5 class="card-title">مستوران</h5>
+        <p class="card-text">سریال تلویزیونی مستوران</p>
+        <a href="#" class="btn btn-primary">تماشا کنید</a>
+      </div>
+
+      <div class="view-counter-med">
+        <span class="times-played-med">121</span>
+        <img
+          class="play-icon-med"
+          src="{%static 'jjii/images/play.png'%}"
+          alt=""
+        />
+      </div>
+    </div>
+
+    <div class="card movie-card bg-dark text-light">
+      <img
+        class="card-img-top"
+        src="{%static 'jjii/images/slider01.jpg'%}"
+        alt="Card image cap"
+      />
+      <div class="card-body">
+        <h5 class="card-title">مستوران</h5>
+        <p class="card-text">سریال تلویزیونی مستوران</p>
+        <a href="#" class="btn btn-primary">تماشا کنید</a>
+      </div>
+
+      <div class="view-counter-med">
+        <span class="times-played-med">121</span>
+        <img
+          class="play-icon-med"
+          src="{%static 'jjii/images/play.png'%}"
+          alt=""
+        />
+      </div>
+    </div>
+
+    <div class="card movie-card bg-dark text-light">
+      <img
+        class="card-img-top"
+        src="{%static 'jjii/images/slider01.jpg'%}"
+        alt="Card image cap"
+      />
+      <div class="card-body">
+        <h5 class="card-title">مستوران</h5>
+        <p class="card-text">سریال تلویزیونی مستوران</p>
+        <a href="#" class="btn btn-primary">تماشا کنید</a>
+      </div>
+
+      <div class="view-counter-med">
+        <span class="times-played-med">121</span>
+        <img
+          class="play-icon-med"
+          src="{%static 'jjii/images/play.png'%}"
+          alt=""
+        />
+      </div>
+    </div>
+
+    <div class="card movie-card bg-dark text-light">
+      <img
+        class="card-img-top"
+        src="{%static 'jjii/images/slider01.jpg'%}"
+        alt="Card image cap"
+      />
+      <div class="card-body">
+        <h5 class="card-title">مستوران</h5>
+        <p class="card-text">سریال تلویزیونی مستوران</p>
+        <a href="#" class="btn btn-primary">تماشا کنید</a>
+      </div>
+
+      <div class="view-counter-med">
+        <span class="times-played-med">121</span>
+        <img
+          class="play-icon-med"
+          src="{%static 'jjii/images/play.png'%}"
+          alt=""
+        />
+      </div>
+    </div>
+
+    <div class="card movie-card bg-dark text-light">
+      <img
+        class="card-img-top"
+        src="{%static 'jjii/images/slider01.jpg'%}"
+        alt="Card image cap"
+      />
+      <div class="card-body">
+        <h5 class="card-title">مستوران</h5>
+        <p class="card-text">سریال تلویزیونی مستوران</p>
+        <a href="#" class="btn btn-primary">تماشا کنید</a>
+      </div>
+
+      <div class="view-counter-med">
+        <span class="times-played-med">121</span>
+        <img
+          class="play-icon-med"
+          src="{%static 'jjii/images/play.png'%}"
+          alt=""
+        />
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="spacer">
+  <img class="spacer" src="{%static 'jjii/images/spacer02.jpg'%}" alt="" />
+</div>
+
+<!--مستند ها-->
+
+<div class="exclusive bg-dark m-0 d-block">
+  <div class="exclusive-title">مستند</div>
+  <br />
+  <div class="exclusive-card-frame justify-content-center">
+    <div class="card doc-card bg-dark text-light">
+      <img
+        class="card-img-top"
+        src="{%static 'jjii/images/slider01.jpg'%}"
+        alt="Card image cap"
+      />
+      <div class="card-body">
+        <h5 class="card-title">مستوران</h5>
+        <p class="card-text">سریال تلویزیونی مستوران</p>
+        <a href="#" class="btn btn-primary">تماشا کنید</a>
+      </div>
+
+      <div class="view-counter-med">
+        <span class="times-played-med">121</span>
+        <img
+          class="play-icon-med"
+          src="{%static 'jjii/images/play.png'%}"
+          alt=""
+        />
+      </div>
+    </div>
+
+    <div class="card doc-card bg-dark text-light">
+      <img
+        class="card-img-top"
+        src="{%static 'jjii/images/slider01.jpg'%}"
+        alt="Card image cap"
+      />
+      <div class="card-body">
+        <h5 class="card-title">مستوران</h5>
+        <p class="card-text">سریال تلویزیونی مستوران</p>
+        <a href="#" class="btn btn-primary">تماشا کنید</a>
+      </div>
+
+      <div class="view-counter-med">
+        <span class="times-played-med">121</span>
+        <img
+          class="play-icon-med"
+          src="{%static 'jjii/images/play.png'%}"
+          alt=""
+        />
+      </div>
+    </div>
+
+    <div class="card doc-card bg-dark text-light">
+      <img
+        class="card-img-top"
+        src="{%static 'jjii/images/slider01.jpg'%}"
+        alt="Card image cap"
+      />
+      <div class="card-body">
+        <h5 class="card-title">مستوران</h5>
+        <p class="card-text">سریال تلویزیونی مستوران</p>
+        <a href="#" class="btn btn-primary">تماشا کنید</a>
+      </div>
+
+      <div class="view-counter-med">
+        <span class="times-played-med">121</span>
+        <img
+          class="play-icon-med"
+          src="{%static 'jjii/images/play.png'%}"
+          alt=""
+        />
+      </div>
+    </div>
+
+    <div class="card doc-card bg-dark text-light">
+      <img
+        class="card-img-top"
+        src="{%static 'jjii/images/slider01.jpg'%}"
+        alt="Card image cap"
+      />
+      <div class="card-body">
+        <h5 class="card-title">مستوران</h5>
+        <p class="card-text">سریال تلویزیونی مستوران</p>
+        <a href="#" class="btn btn-primary">تماشا کنید</a>
+      </div>
+
+      <div class="view-counter-med">
+        <span class="times-played-med">121</span>
+        <img
+          class="play-icon-med"
+          src="{%static 'jjii/images/play.png'%}"
+          alt=""
+        />
+      </div>
+    </div>
+
+    <div class="card doc-card bg-dark text-light">
+      <img
+        class="card-img-top"
+        src="{%static 'jjii/images/slider01.jpg'%}"
+        alt="Card image cap"
+      />
+      <div class="card-body">
+        <h5 class="card-title">مستوران</h5>
+        <p class="card-text">سریال تلویزیونی مستوران</p>
+        <a href="#" class="btn btn-primary">تماشا کنید</a>
+      </div>
+
+      <div class="view-counter-med">
+        <span class="times-played-med">121</span>
+        <img
+          class="play-icon-med"
+          src="{%static 'jjii/images/play.png'%}"
+          alt=""
+        />
+      </div>
+    </div>
+
+    <div class="card doc-card bg-dark text-light">
+      <img
+        class="card-img-top"
+        src="{%static 'jjii/images/slider01.jpg'%}"
+        alt="Card image cap"
+      />
+      <div class="card-body">
+        <h5 class="card-title">مستوران</h5>
+        <p class="card-text">سریال تلویزیونی مستوران</p>
+        <a href="#" class="btn btn-primary">تماشا کنید</a>
+      </div>
+
+      <div class="view-counter-med">
+        <span class="times-played-med">121</span>
+        <img
+          class="play-icon-med"
+          src="{%static 'jjii/images/play.png'%}"
+          alt=""
+        />
+      </div>
+    </div>
+
+    <div class="card doc-card bg-dark text-light">
+      <img
+        class="card-img-top"
+        src="{%static 'jjii/images/slider01.jpg'%}"
+        alt="Card image cap"
+      />
+      <div class="card-body">
+        <h5 class="card-title">مستوران</h5>
+        <p class="card-text">سریال تلویزیونی مستوران</p>
+        <a href="#" class="btn btn-primary">تماشا کنید</a>
+      </div>
+
+      <div class="view-counter-med">
+        <span class="times-played-med">121</span>
+        <img
+          class="play-icon-med"
+          src="{%static 'jjii/images/play.png'%}"
+          alt=""
+        />
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="spacer">
+  <img class="spacer" src="{%static 'jjii/images/spacer01.jpg'%}" alt="" />
+</div>
+
+<!--کودک-->
+
+<div class="exclusive bg-dark m-0 d-block">
+  <div class="exclusive-title">کودک</div>
+  <br />
+  <div class="exclusive-card-frame justify-content-center">
+    <div class="card exclusive-card bg-dark text-light">
+      <img
+        class="card-img-top"
+        src="{%static 'jjii/images/slider01.jpg'%}"
+        alt="Card image cap"
+      />
+      <div class="card-body">
+        <h5 class="card-title">مستوران</h5>
+        <p class="card-text">سریال تلویزیونی مستوران</p>
+        <a href="#" class="btn btn-primary">تماشا کنید</a>
+      </div>
+
+      <div class="view-counter">
+        <span class="times-played">121</span>
+        <img class="play-icon" src="{%static 'jjii/images/play.png'%}" alt="" />
+      </div>
+    </div>
+
+    <div class="card exclusive-card bg-dark text-light">
+      <img
+        class="card-img-top"
+        src="{%static 'jjii/images/slider01.jpg'%}"
+        alt="Card image cap"
+      />
+      <div class="card-body">
+        <h5 class="card-title">مستوران</h5>
+        <p class="card-text">سریال تلویزیونی مستوران</p>
+        <a href="#" class="btn btn-primary">تماشا کنید</a>
+      </div>
+
+      <div class="view-counter">
+        <span class="times-played">121</span>
+        <img class="play-icon" src="{%static 'jjii/images/play.png'%}" alt="" />
+      </div>
+    </div>
+
+    <div class="card exclusive-card bg-dark text-light">
+      <img
+        class="card-img-top"
+        src="{%static 'jjii/images/slider01.jpg'%}"
+        alt="Card image cap"
+      />
+      <div class="card-body">
+        <h5 class="card-title">مستوران</h5>
+        <p class="card-text">سریال تلویزیونی مستوران</p>
+        <a href="#" class="btn btn-primary">تماشا کنید</a>
+      </div>
+
+      <div class="view-counter">
+        <span class="times-played">121</span>
+        <img class="play-icon" src="{%static 'jjii/images/play.png'%}" alt="" />
+      </div>
+    </div>
+
+    <div class="card exclusive-card bg-dark text-light">
+      <img
+        class="card-img-top"
+        src="{%static 'jjii/images/slider01.jpg'%}"
+        alt="Card image cap"
+      />
+      <div class="card-body">
+        <h5 class="card-title">مستوران</h5>
+        <p class="card-text">سریال تلویزیونی مستوران</p>
+        <a href="#" class="btn btn-primary">تماشا کنید</a>
+      </div>
+
+      <div class="view-counter">
+        <span class="times-played">121</span>
+        <img class="play-icon" src="{%static 'jjii/images/play.png'%}" alt="" />
+      </div>
+    </div>
+
+    <div class="card exclusive-card bg-dark text-light">
+      <img
+        class="card-img-top"
+        src="{%static 'jjii/images/slider01.jpg'%}"
+        alt="Card image cap"
+      />
+      <div class="card-body">
+        <h5 class="card-title">مستوران</h5>
+        <p class="card-text">سریال تلویزیونی مستوران</p>
+        <a href="#" class="btn btn-primary">تماشا کنید</a>
+      </div>
+
+      <div class="view-counter">
+        <span class="times-played">121</span>
+        <img class="play-icon" src="{%static 'jjii/images/play.png'%}" alt="" />
+      </div>
+    </div>
+
+    <div class="card exclusive-card bg-dark text-light">
+      <img
+        class="card-img-top"
+        src="{%static 'jjii/images/slider01.jpg'%}"
+        alt="Card image cap"
+      />
+      <div class="card-body">
+        <h5 class="card-title">مستوران</h5>
+        <p class="card-text">سریال تلویزیونی مستوران</p>
+        <a href="#" class="btn btn-primary">تماشا کنید</a>
+      </div>
+
+      <div class="view-counter">
+        <span class="times-played">121</span>
+        <img class="play-icon" src="{%static 'jjii/images/play.png'%}" alt="" />
+      </div>
+    </div>
+
+    <div class="card exclusive-card bg-dark text-light">
+      <img
+        class="card-img-top"
+        src="{%static 'jjii/images/slider01.jpg'%}"
+        alt="Card image cap"
+      />
+      <div class="card-body">
+        <h5 class="card-title">مستوران</h5>
+        <p class="card-text">سریال تلویزیونی مستوران</p>
+        <a href="#" class="btn btn-primary">تماشا کنید</a>
+      </div>
+
+      <div class="view-counter">
+        <span class="times-played">121</span>
+        <img class="play-icon" src="{%static 'jjii/images/play.png'%}" alt="" />
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="spacer">
+  <img class="spacer" src="{%static 'jjii/images/spacer02.jpg'%}" alt="" />
+</div>
+
+<!--موسیقی-->
+
+<div class="exclusive bg-dark m-0 d-block">
+  <div class="exclusive-title">نماهنگ</div>
+  <br />
+  <div class="exclusive-card-frame justify-content-center">
+    <div class="card clip-card bg-dark text-light">
+      <img
+        class="card-img-top"
+        src="{%static 'jjii/images/slider01.jpg'%}"
+        alt="Card image cap"
+      />
+      <div class="card-body">
+        <h5 class="card-title">مستوران</h5>
+        <p class="card-text">سریال تلویزیونی مستوران</p>
+        <a href="#" class="btn sm-btn btn-primary">تماشا کنید</a>
+      </div>
+
+      <div class="view-counter-sm">
+        <span class="times-played-sm">121</span>
+        <img
+          class="play-icon-sm"
+          src="{%static 'jjii/images/play.png'%}"
+          alt=""
+        />
+      </div>
+    </div>
+
+    <div class="card clip-card bg-dark text-light">
+      <img
+        class="card-img-top"
+        src="{%static 'jjii/images/slider01.jpg'%}"
+        alt="Card image cap"
+      />
+      <div class="card-body">
+        <h5 class="card-title">مستوران</h5>
+        <p class="card-text">سریال تلویزیونی مستوران</p>
+        <a href="#" class="btn sm-btn btn-primary">تماشا کنید</a>
+      </div>
+
+      <div class="view-counter-sm">
+        <span class="times-played-sm">121</span>
+        <img
+          class="play-icon-sm"
+          src="{%static 'jjii/images/play.png'%}"
+          alt=""
+        />
+      </div>
+    </div>
+
+    <div class="card clip-card bg-dark text-light">
+      <img
+        class="card-img-top"
+        src="{%static 'jjii/images/slider01.jpg'%}"
+        alt="Card image cap"
+      />
+      <div class="card-body">
+        <h5 class="card-title">مستوران</h5>
+        <p class="card-text">سریال تلویزیونی مستوران</p>
+        <a href="#" class="btn sm-btn btn-primary">تماشا کنید</a>
+      </div>
+
+      <div class="view-counter-sm">
+        <span class="times-played-sm">121</span>
+        <img
+          class="play-icon-sm"
+          src="{%static 'jjii/images/play.png'%}"
+          alt=""
+        />
+      </div>
+    </div>
+
+    <div class="card clip-card bg-dark text-light">
+      <img
+        class="card-img-top"
+        src="{%static 'jjii/images/slider01.jpg'%}"
+        alt="Card image cap"
+      />
+      <div class="card-body">
+        <h5 class="card-title">مستوران</h5>
+        <p class="card-text">سریال تلویزیونی مستوران</p>
+        <a href="#" class="btn sm-btn btn-primary">تماشا کنید</a>
+      </div>
+
+      <div class="view-counter-sm">
+        <span class="times-played-sm">121</span>
+        <img
+          class="play-icon-sm"
+          src="{%static 'jjii/images/play.png'%}"
+          alt=""
+        />
+      </div>
+    </div>
+
+    <div class="card clip-card bg-dark text-light">
+      <img
+        class="card-img-top"
+        src="{%static 'jjii/images/slider01.jpg'%}"
+        alt="Card image cap"
+      />
+      <div class="card-body">
+        <h5 class="card-title">مستوران</h5>
+        <p class="card-text">سریال تلویزیونی مستوران</p>
+        <a href="#" class="btn sm-btn btn-primary">تماشا کنید</a>
+      </div>
+
+      <div class="view-counter-sm">
+        <span class="times-played-sm">121</span>
+        <img
+          class="play-icon-sm"
+          src="{%static 'jjii/images/play.png'%}"
+          alt=""
+        />
+      </div>
+    </div>
+
+    <div class="card clip-card bg-dark text-light">
+      <img
+        class="card-img-top"
+        src="{%static 'jjii/images/slider01.jpg'%}"
+        alt="Card image cap"
+      />
+      <div class="card-body">
+        <h5 class="card-title">مستوران</h5>
+        <p class="card-text">سریال تلویزیونی مستوران</p>
+        <a href="#" class="btn sm-btn btn-primary">تماشا کنید</a>
+      </div>
+
+      <div class="view-counter-sm">
+        <span class="times-played-sm">121</span>
+        <img
+          class="play-icon-sm"
+          src="{%static 'jjii/images/play.png'%}"
+          alt=""
+        />
+      </div>
+    </div>
+
+    <div class="card clip-card bg-dark text-light">
+      <img
+        class="card-img-top"
+        src="{%static 'jjii/images/slider01.jpg'%}"
+        alt="Card image cap"
+      />
+      <div class="card-body">
+        <h5 class="card-title">مستوران</h5>
+        <p class="card-text">سریال تلویزیونی مستوران</p>
+        <a href="#" class="btn sm-btn btn-primary">تماشا کنید</a>
+      </div>
+
+      <div class="view-counter-sm">
+        <span class="times-played-sm">121</span>
+        <img
+          class="play-icon-sm"
+          src="{%static 'jjii/images/play.png'%}"
+          alt=""
+        />
+      </div>
+    </div>
+
+    <div class="card clip-card bg-dark text-light">
+      <img
+        class="card-img-top"
+        src="{%static 'jjii/images/slider01.jpg'%}"
+        alt="Card image cap"
+      />
+      <div class="card-body">
+        <h5 class="card-title">مستوران</h5>
+        <p class="card-text">سریال تلویزیونی مستوران</p>
+        <a href="#" class="btn sm-btn btn-primary">تماشا کنید</a>
+      </div>
+
+      <div class="view-counter-sm">
+        <span class="times-played-sm">121</span>
+        <img
+          class="play-icon-sm"
+          src="{%static 'jjii/images/play.png'%}"
+          alt=""
+        />
+      </div>
+    </div>
+
+    <div class="card clip-card bg-dark text-light">
+      <img
+        class="card-img-top"
+        src="{%static 'jjii/images/slider01.jpg'%}"
+        alt="Card image cap"
+      />
+      <div class="card-body">
+        <h5 class="card-title">مستوران</h5>
+        <p class="card-text">سریال تلویزیونی مستوران</p>
+        <a href="#" class="btn sm-btn btn-primary">تماشا کنید</a>
+      </div>
+
+      <div class="view-counter-sm">
+        <span class="times-played-sm">121</span>
+        <img
+          class="play-icon-sm"
+          src="{%static 'jjii/images/play.png'%}"
+          alt=""
+        />
+      </div>
+    </div>
+
+    <div class="card clip-card bg-dark text-light">
+      <img
+        class="card-img-top"
+        src="{%static 'jjii/images/slider01.jpg'%}"
+        alt="Card image cap"
+      />
+      <div class="card-body">
+        <h5 class="card-title">مستوران</h5>
+        <p class="card-text">سریال تلویزیونی مستوران</p>
+        <a href="#" class="btn sm-btn btn-primary">تماشا کنید</a>
+      </div>
+
+      <div class="view-counter-sm">
+        <span class="times-played-sm">121</span>
+        <img
+          class="play-icon-sm"
+          src="{%static 'jjii/images/play.png'%}"
+          alt=""
+        />
+      </div>
+    </div>
+
+    <div class="card clip-card bg-dark text-light">
+      <img
+        class="card-img-top"
+        src="{%static 'jjii/images/slider01.jpg'%}"
+        alt="Card image cap"
+      />
+      <div class="card-body">
+        <h5 class="card-title">مستوران</h5>
+        <p class="card-text">سریال تلویزیونی مستوران</p>
+        <a href="#" class="btn sm-btn btn-primary">تماشا کنید</a>
+      </div>
+
+      <div class="view-counter-sm">
+        <span class="times-played-sm">121</span>
+        <img
+          class="play-icon-sm"
+          src="{%static 'jjii/images/play.png'%}"
+          alt=""
+        />
+      </div>
+    </div>
+  </div>
+</div>
+
+{%endblock content%}

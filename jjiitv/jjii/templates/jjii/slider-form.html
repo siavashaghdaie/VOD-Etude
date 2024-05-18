@@ -1,0 +1,44 @@
+{%extends 'main.html'%}
+{%block content%}
+
+<style>
+    .form-container{
+        position: relative;
+        z-index: 1;
+        margin:20px;
+        padding :20px;
+        border-radius: 10px;
+    }
+    .form{
+        display:grid;
+        
+    }
+    input{
+        position:relative;
+        display:grid;
+        width:98%;
+        
+    }
+    textarea{
+        position:relative;
+        display:grid;
+        width:98%;
+    }
+    .button{
+        background-color:green;
+    }
+    
+
+    
+</style>
+
+
+
+<div class="form-container bg-light" >
+    <form action="" method="POST", enctype='multipart/form-data'>
+        {%csrf_token%}
+        {{form.as_p}}
+        <input class = "button" type="submit" value="ثبت">
+    </form>
+</div>
+{%endblock content%}
